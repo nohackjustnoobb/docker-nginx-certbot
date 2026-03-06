@@ -240,6 +240,12 @@ parse_config_file() {
             continue
         fi
 
+        # Ignore '_' since it is nginx's catch-all placeholder and not a real domain
+        if [[ "${server_name}" == "_" ]]; then
+            debug "Ignoring server name '${server_name}' since it is nginx's catch-all placeholder"
+            continue
+        fi
+
         server_names+=("${server_name}")
     done
     debug "Found the following domain names: ${server_names[*]}"
