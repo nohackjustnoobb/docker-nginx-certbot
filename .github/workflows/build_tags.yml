@@ -15,7 +15,7 @@ jobs:
       - name: Run Docker on tmpfs
         uses: JonasAlfredsson/docker-on-tmpfs@v2.0.0
         with:
-          tmpfs_size: 7
+          tmpfs_size: 8
           swap_size: 9
 
       - name: Perform setup steps
@@ -30,7 +30,7 @@ jobs:
         run: bash .github/version_extractor.sh ${GITHUB_REF} >> $GITHUB_ENV
 
       - name: Build and push all Debian images
-        uses: docker/build-push-action@v7.2.0
+        uses: docker/build-push-action@v7.4.0
         with:
           context: ./src
           file: ./src/Dockerfile
@@ -55,7 +55,7 @@ jobs:
       - name: Run Docker on tmpfs
         uses: JonasAlfredsson/docker-on-tmpfs@v2.0.0
         with:
-          tmpfs_size: 7
+          tmpfs_size: 8
           swap_size: 9
 
       - name: Perform setup steps
@@ -70,7 +70,7 @@ jobs:
         run: bash .github/version_extractor.sh ${GITHUB_REF} >> $GITHUB_ENV
 
       - name: Build and push all Alpine images
-        uses: docker/build-push-action@v7.2.0
+        uses: docker/build-push-action@v7.4.0
         with:
           context: ./src
           file: ./src/Dockerfile-alpine
